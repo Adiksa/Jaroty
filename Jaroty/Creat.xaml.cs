@@ -15,30 +15,25 @@ using System.Windows.Shapes;
 namespace Jaroty
 {
     /// <summary>
-    /// Logika interakcji dla klasy Login.xaml
+    /// Logika interakcji dla klasy Creat.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Creat : Window
     {
-        public Login()
+        public Creat()
         {
             InitializeComponent();
         }
 
-        private void Wyjdz_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void CreatAcc_Click(object sender, RoutedEventArgs e)
+        private void UserGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Creat tworzenie = new Creat();
-            tworzenie.ShowDialog();
-            
-        }
-
-        private void Zaloguj_Click(object sender, RoutedEventArgs e)
-        {
-            CreatAcc.Visibility = Visibility.Hidden;
+            User.Visibility = Visibility.Hidden;
+            if (UserGroup.SelectedIndex == 0)
+                User.Visibility = Visibility.Visible;
         }
     }
 }

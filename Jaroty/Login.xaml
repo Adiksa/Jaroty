@@ -13,7 +13,14 @@
     <Grid>
         <Grid>
             <StackPanel>
-                <Button Height="25" Width="100" HorizontalAlignment="Right" Name="Wyjdz" Click="Wyjdz_Click" Content="Wyłącz program"/>
+                <Button Height="25" Width="100" 
+                        HorizontalAlignment="Right"
+                        Name="Wyjdz" 
+                        Click="Wyjdz_Click" 
+                        Content="Wyłącz program" 
+                        Background="Transparent" 
+                        Foreground="Red"
+                        FontStyle="Italic"/>
             </StackPanel>                
             <StackPanel>
                 <Border Width="430" Height="165" VerticalAlignment="Top" HorizontalAlignment="Center"  >
@@ -52,12 +59,32 @@
                 Foreground="Red"
                 HorizontalAlignment="Center"/>
                 <Border Height="25"/>
-                <TextBlock Text="Nazwa użtkownika" 
+                <TextBlock Text="Nazwa użytkownika" 
                 FontWeight="Heavy"
                 FontSize="20"
                 Foreground="Red"
                 HorizontalAlignment="Center"/>
-                
+                <TextBox Width="200" Margin="0 5" />
+                <TextBlock Text="Hasło" 
+                FontWeight="Heavy"
+                FontSize="20"
+                Foreground="Red"
+                HorizontalAlignment="Center"/>
+                <PasswordBox Name="Haslo" Width="200" Margin="0 5"/>
+                <Button Height="25" Width="100" 
+                        Name="Zaloguj" 
+                        Content="Zaloguj" 
+                        Background="Red" 
+                        Foreground="Orange"
+                        FontStyle="Italic"
+                        Margin="0 5" Click="Zaloguj_Click"/>
+                <Button Height="25" Width="100" 
+                        Name="CreatAcc" 
+                        Content="Utwórz Konto" 
+                        Background="Red" 
+                        Foreground="Orange"
+                        FontStyle="Italic"
+                        Margin="0 5" Click="CreatAcc_Click"/>
             </StackPanel>
         </Grid>
     </Grid>
