@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Jaroty"
         mc:Ignorable="d"
-        Title="Creat" Height="500" Width="400"
+        Title="Creat" Height="250" Width="400"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Orange"
         WindowStartupLocation="CenterScreen">
@@ -19,25 +19,25 @@
             <Border Height="5"/>
             <TextBlock Text="Nazwa użytkownika" 
                 FontWeight="Heavy"
-                FontSize="20"
+                FontSize="16"
                 Foreground="Red"
                 HorizontalAlignment="Center"
-                Margin="0 5"/>
-            <TextBox Width="200" />
+                Margin="0 5 0 0"/>
+            <TextBox Width="200" Margin="0 5"/>
             <TextBlock Text="Hasło" 
                 FontWeight="Heavy"
-                FontSize="20"
+                FontSize="16"
                 Foreground="Red"
                 HorizontalAlignment="Center"
-                Margin="0 5"/>
-            <PasswordBox Name="Haslo" Width="200" />
+                Margin="0 0"/>
+            <PasswordBox Name="Haslo" Width="200" Margin="0 5"/>
             <TextBlock 
                 Text="Grupa użytkownika"
                 HorizontalAlignment="Center"
-                FontSize="20"
+                FontSize="16"
                 Foreground="Red"
                 FontWeight="Heavy"
-                Margin="0 5"/>
+                Margin="0 0"/>
             <ComboBox Name="UserGroup" Width="200" Margin="0 5" SelectionChanged="UserGroup_SelectionChanged">
                 <ComboBoxItem>Właściciel mieszkania</ComboBoxItem>
                 <ComboBoxItem>Operator systemu</ComboBoxItem>
@@ -48,11 +48,42 @@
                 Name="Pesel"
                 Text="PESEL"
                 HorizontalAlignment="Center"
-                FontSize="20"
+                FontSize="16"
                 Foreground="Red"
                 FontWeight="Heavy"
-                Margin="0 5"
+                Margin="0 0"
                 />
+                <TextBox Width="200" Margin="0 5"/>
+                <TextBlock
+                Name="Data"
+                Text="Data Urodzenia"
+                HorizontalAlignment="Center"
+                FontSize="16"
+                Foreground="Red"
+                FontWeight="Heavy"
+                Margin="0 0"
+                />
+                <DatePicker Width="200" Margin="0 5" />
+                <TextBlock
+                Name="Email"
+                Text="Email"
+                HorizontalAlignment="Center"
+                FontSize="16"
+                Foreground="Red"
+                FontWeight="Heavy"
+                Margin="0 0"
+                />
+                <TextBox Width="200" Margin="0 5"/>
+                <TextBlock
+                Name="Telefon"
+                Text="Numer Telefonu"
+                HorizontalAlignment="Center"
+                FontSize="16"
+                Foreground="Red"
+                FontWeight="Heavy"
+                Margin="0 0"
+                />
+                <TextBox Width="200" Margin="0 5"/>
             </StackPanel>
             
         </StackPanel>

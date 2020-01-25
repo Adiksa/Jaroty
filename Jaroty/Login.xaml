@@ -64,7 +64,7 @@
                 FontSize="20"
                 Foreground="Red"
                 HorizontalAlignment="Center"/>
-                <TextBox Width="200" Margin="0 5" />
+                <TextBox Name="UserLogin" Width="200" Margin="0 5" />
                 <TextBlock Text="Hasło" 
                 FontWeight="Heavy"
                 FontSize="20"

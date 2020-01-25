@@ -32,8 +32,12 @@ namespace Jaroty
         private void UserGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             User.Visibility = Visibility.Hidden;
+            this.Height = 250;
             if (UserGroup.SelectedIndex == 0)
+            {
+                this.Height = 450;
                 User.Visibility = Visibility.Visible;
+            }
         }
     }
 }
