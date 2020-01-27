@@ -1,0 +1,69 @@
+﻿<Window x:Class="Jaroty.DodajMieszkanie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jaroty"
+        mc:Ignorable="d"
+        Title="DodajMieszkanie" Height="350" Width="400"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Orange"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border Width="400" Height="10" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Red"/>
+        <Border Width="400" Height="10" VerticalAlignment="Bottom" HorizontalAlignment="Center" Background="Red"/>
+        <Border Width="10" Height="500" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Red"/>
+        <Border Width="10" Height="500" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Red"/>
+        <Button Name="Back" Content="Wróć" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="Orange" Background="Red" FontWeight="Heavy" Click="Back_Click"/>
+        <Button Name="Add" Content="Dodaj mieszkanie" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"  Foreground="Orange" Background="Red" FontWeight="Heavy" Click="Add_Click"/>
+        <StackPanel>
+            <TextBlock Text="Nie wykryto żadnego mieszkania przypisanego do Twojego użytkownika. Dodaj je."
+                   Width="340"
+                   FontWeight="Heavy"
+                   FontSize="16"
+                   Foreground="Red"
+                   HorizontalAlignment="Center"
+                   Margin="0 25 0 5"
+                   TextWrapping="Wrap"/>
+            <TextBlock Text="Ulica" 
+                FontWeight="Heavy"
+                FontSize="16"
+                Foreground="Red"
+                HorizontalAlignment="Center"
+                Margin="0 0 0 0"/>
+            <TextBox Name="Ulica" 
+                     Width="200" 
+                     Margin="0 5"/>
+            <TextBlock Text="Numer Budynku" 
+                       FontWeight="Heavy"
+                       FontSize="16"
+                       Foreground="Red"
+                       HorizontalAlignment="Center"
+                       Margin="0 5 0 0"/>
+            <TextBox Name="NrBloku" 
+                     Width="200" 
+                     Margin="0 5"
+                     PreviewTextInput="NumberValidationTextBox"/>
+            <TextBlock Text="Numer Mieszkania" 
+                FontWeight="Heavy"
+                FontSize="16"
+                Foreground="Red"
+                HorizontalAlignment="Center"/>
+            <TextBox Name="NrMieszkania" 
+                     Width="200" 
+                     Margin="0 5"
+                     PreviewTextInput="NumberValidationTextBox"/>
+            <TextBlock Text="Metraż w metrach kwadratowych" 
+                FontWeight="Heavy"
+                FontSize="16"
+                Foreground="Red"
+                HorizontalAlignment="Center"
+                Margin="0 5 0 0"/>
+            <TextBox Name="Metraz" 
+                     Width="200" 
+                     Margin="0 5"
+                     PreviewTextInput="NumberValidationTextBox"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

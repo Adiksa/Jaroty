@@ -60,10 +60,40 @@ namespace Jaroty
                     adapter.Fill(table);
                     if (table.Rows.Count > 0)
                     {
-                        MessageBox.Show("correct");
+                        DataTable table3 = new DataTable();
+                        MySqlDataAdapter adapter3 = new MySqlDataAdapter();
+                        String query3 = "Select * FROM login WHERE Login=@log";
+                        MySqlCommand command3 = new MySqlCommand(query3, conn);
+                        command3.Parameters.Add("@log", MySqlDbType.VarChar).Value = login;
+                        adapter3.SelectCommand = command;
+                        adapter3.Fill(table3);
+                        int ID = table3.Rows[0].Field<int>(0);
+                        int usertype = table3.Rows[0].Field<int>(3);
+                        if(usertype == 0)
+                        {
+                            DataTable table2 = new DataTable();
+                            MySqlDataAdapter adapter2 = new MySqlDataAdapter();
+                            String query2 = "Select Ulica,NrBloku,NrMieszkania,IdMieszkania FROM Mieszkanie WHERE IdWlasciciela=@id";
+                            MySqlCommand command2 = new MySqlCommand(query2, conn);
+                            command2.Parameters.Add("@id", MySqlDbType.Int16).Value = ID;
+                            adapter2.SelectCommand = command2;
+                            adapter2.Fill(table2);
+                            if (table2.Rows.Count == 0)
+                            {
+                                DodajMieszkanie dodaj = new DodajMieszkanie(ID);
+                                this.Close();
+                                dodaj.Show();
+                            }
+                            if (table2.Rows.Count > 1)
+                            {
+                                WybierzMieszkanie wybierz = new WybierzMieszkanie(table2, ID);
+                                this.Close();
+                                wybierz.Show();
+                            }
+                        }
                     }
                     else
-                        MessageBox.Show("not correct");
+                        MessageBox.Show("Błędna nazwa użytkownika lub hasło.");
                     conn.Close();
                     
                 }

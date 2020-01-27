@@ -113,8 +113,12 @@
                 Foreground="Red"
                 FontWeight="Heavy"
                 Margin="0 0"
-                />
-                <TextBox Name="TelefonuUzytkownika"  Width="200" Margin="0 5"/>
+                 PreviewTextInput="NumberValidationTextBox"/>
+                <TextBox Name="TelefonuUzytkownika"  
+                         Width="200" 
+                         Margin="0 5" 
+                         PreviewTextInput="NumberValidationTextBox"
+                         MaxLength="10"/>
             </StackPanel>
             
         </StackPanel>

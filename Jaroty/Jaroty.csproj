@@ -58,7 +58,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Uzytkownik.xaml.cs">
+      <DependentUpon>Uzytkownik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WybierzMieszkanie.xaml.cs">
+      <DependentUpon>WybierzMieszkanie.xaml</DependentUpon>
+    </Compile>
     <Page Include="Creat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DodajMieszkanie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -73,9 +83,20 @@
     <Compile Include="Creat.xaml.cs">
       <DependentUpon>Creat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DodajMieszkanie.xaml.cs">
+      <DependentUpon>DodajMieszkanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Page Include="Uzytkownik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WybierzMieszkanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
