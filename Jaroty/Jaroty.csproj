@@ -58,8 +58,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DodajCene.xaml.cs">
+      <DependentUpon>DodajCene.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DodajOplate.xaml.cs">
+      <DependentUpon>DodajOplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EdytujCene.xaml.cs">
+      <DependentUpon>EdytujCene.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EdytujOplate.xaml.cs">
+      <DependentUpon>EdytujOplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operator.xaml.cs">
+      <DependentUpon>Operator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Uzytkownik.xaml.cs">
       <DependentUpon>Uzytkownik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wspolnota.xaml.cs">
+      <DependentUpon>Wspolnota.xaml</DependentUpon>
     </Compile>
     <Compile Include="WybierzMieszkanie.xaml.cs">
       <DependentUpon>WybierzMieszkanie.xaml</DependentUpon>
@@ -68,7 +86,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DodajCene.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DodajMieszkanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DodajOplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EdytujCene.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EdytujOplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,7 +123,15 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Page Include="Operator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Uzytkownik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wspolnota.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

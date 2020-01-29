@@ -40,10 +40,13 @@ namespace Jaroty
         private void Wybierz_Click(object sender, RoutedEventArgs e)
         {
             DataRowView wybrane = Mieszkania.SelectedItem as DataRowView;
-            int userhomeid = (int) wybrane.Row.ItemArray[3];
-            Uzytkownik home = new Uzytkownik(id, userhomeid);
-            home.Show();
-            this.Close();
+            if(wybrane != null)
+            {
+                int userhomeid = (int)wybrane.Row.ItemArray[3];
+                Uzytkownik home = new Uzytkownik(id, userhomeid);
+                home.Show();
+                this.Close();
+            }
         }
     }
 }

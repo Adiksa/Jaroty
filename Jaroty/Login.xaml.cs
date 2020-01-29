@@ -69,7 +69,7 @@ namespace Jaroty
                         adapter3.Fill(table3);
                         int ID = table3.Rows[0].Field<int>(0);
                         int usertype = table3.Rows[0].Field<int>(3);
-                        if(usertype == 0)
+                        if (usertype == 0)
                         {
                             DataTable table2 = new DataTable();
                             MySqlDataAdapter adapter2 = new MySqlDataAdapter();
@@ -81,15 +81,33 @@ namespace Jaroty
                             if (table2.Rows.Count == 0)
                             {
                                 DodajMieszkanie dodaj = new DodajMieszkanie(ID);
-                                this.Close();
                                 dodaj.Show();
+                                this.Close();
                             }
                             if (table2.Rows.Count > 1)
                             {
                                 WybierzMieszkanie wybierz = new WybierzMieszkanie(table2, ID);
-                                this.Close();
                                 wybierz.Show();
+                                this.Close();
                             }
+                            if (table2.Rows.Count == 1)
+                            {
+                                Uzytkownik home = new Uzytkownik(ID, table2.Rows[0].Field<int>(3));
+                                home.Show();
+                                this.Close();
+                            }
+                        }
+                        if(usertype == 1)
+                        {
+                            Operator home = new Operator(ID);
+                            home.Show();
+                            this.Close();
+                        }
+                        if(usertype == 2)
+                        {
+                            Wspolnota home = new Wspolnota(ID);
+                            home.Show();
+                            this.Close();
                         }
                     }
                     else

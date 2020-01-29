@@ -35,9 +35,9 @@ namespace Jaroty
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             Login logowanie = new Login();
             logowanie.Show();
+            this.Close();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -62,6 +62,8 @@ namespace Jaroty
                         {
                             MessageBox.Show("Dodano mieszkanie.");
                             conn.Close();
+                            Login logowanie = new Login();
+                            logowanie.Show();
                             this.Close();
                         }
                         else

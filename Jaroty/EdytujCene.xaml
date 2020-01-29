@@ -1,0 +1,36 @@
+﻿<Window x:Class="Jaroty.EdytujCene"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jaroty"
+        mc:Ignorable="d"
+        Title="EdytujCene" Height="200" Width="300"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Orange"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border Height="10" Background="Red" VerticalAlignment="Top"/>
+        <Border Width="10" Background="Red" HorizontalAlignment="Left"/>
+        <Border Width="10" Background="Red" HorizontalAlignment="Right"/>
+        <Border Height="10" Background="Red" VerticalAlignment="Bottom"/>
+        <Button Name="Back" Content="Wróć" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="Orange" Background="Red" FontWeight="Heavy" Click="Back_Click"/>
+        <Button Name="Add" Content="Edytuj Cenę" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"  Foreground="Orange" Background="Red" FontWeight="Heavy" Click="Add_Click"/>
+        <StackPanel>
+            <TextBlock Text="Medium" 
+                FontWeight="Heavy"
+                FontSize="16"
+                Foreground="Red"
+                HorizontalAlignment="Center"
+                Margin="0 15 0 5"/>
+            <TextBox x:Name="Medium" Width="200"/>
+            <TextBlock Text="Nalezność" 
+                FontWeight="Heavy"
+                FontSize="16"
+                Foreground="Red"
+                HorizontalAlignment="Center"
+                Margin="0 5"/>
+            <TextBox x:Name="Naleznosc" Width="200"/>
+        </StackPanel>
+    </Grid>
+</Window>

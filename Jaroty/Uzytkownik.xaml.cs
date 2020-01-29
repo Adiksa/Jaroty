@@ -59,6 +59,11 @@ namespace Jaroty
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Home.Visibility = Visibility.Hidden;
+            Zuzycie.Visibility = Visibility.Visible;
+            StatusOplat.Visibility = Visibility.Hidden;
+            HomeButton.Visibility = Visibility.Visible;
+            DoOplat.Visibility = Visibility.Hidden;
             try
             {
                 var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
@@ -81,6 +86,86 @@ namespace Jaroty
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void StatusO_Click(object sender, RoutedEventArgs e)
+        {
+            Home.Visibility = Visibility.Hidden;
+            Zuzycie.Visibility = Visibility.Hidden;
+            StatusOplat.Visibility = Visibility.Visible;
+            HomeButton.Visibility = Visibility.Visible;
+            DoOplat.Visibility = Visibility.Hidden;
+            try
+            {
+                var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    conn.Open();
+                    DataTable oplaty = new DataTable();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    String query = "Select Medium,  Naleznosc , CzyOplacone FROM Oplaty WHERE WlascicielMieszkaniaID=@id AND MieszkanieId=@mid ";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    command.Parameters.Add("@id", MySqlDbType.Int16).Value = IdUser;
+                    command.Parameters.Add("@mid", MySqlDbType.Int16).Value = IdMieszkania;
+                    adapter.SelectCommand = command;
+                    adapter.Fill(oplaty);
+                    SOplaty.ItemsSource = oplaty.DefaultView;
+                    double total = 0.0;
+                    if (oplaty.Rows.Count > 0)
+                    { total += Convert.ToDouble(oplaty.Compute("SUM(Naleznosc)", string.Empty)); }
+                    SOplatyLacznie.Text = "Łączna kwota opłat : " + total.ToString() + " zł.";
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void DoPlatyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Home.Visibility = Visibility.Hidden;
+            Zuzycie.Visibility = Visibility.Hidden;
+            StatusOplat.Visibility = Visibility.Hidden;
+            HomeButton.Visibility = Visibility.Visible;
+            DoOplat.Visibility = Visibility.Visible;
+
+            try
+            {
+                var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    conn.Open();
+                    DataTable oplaty = new DataTable();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    String query = "Select Medium,  Naleznosc FROM Oplaty WHERE WlascicielMieszkaniaID=@id AND MieszkanieId=@mid AND CzyOplacone=0";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    command.Parameters.Add("@id", MySqlDbType.Int16).Value = IdUser;
+                    command.Parameters.Add("@mid", MySqlDbType.Int16).Value = IdMieszkania;
+                    adapter.SelectCommand = command;
+                    adapter.Fill(oplaty);
+                    DOplaty.ItemsSource = oplaty.DefaultView;
+                    double total = 0.0;
+                    if(oplaty.Rows.Count>0)
+                    { total += Convert.ToDouble(oplaty.Compute("SUM(Naleznosc)", string.Empty)); }
+                    DOplatyLacznie.Text = "Łączna kwota do opłaty : " + total.ToString() + " zł.";
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Home.Visibility = Visibility.Visible;
+            Zuzycie.Visibility = Visibility.Hidden;
+            StatusOplat.Visibility = Visibility.Hidden;
+            HomeButton.Visibility = Visibility.Hidden;
+            DoOplat.Visibility = Visibility.Hidden;
         }
     }
 }
