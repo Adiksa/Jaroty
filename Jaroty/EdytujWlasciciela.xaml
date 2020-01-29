@@ -1,12 +1,12 @@
-﻿<Window x:Class="Jaroty.Creat"
+﻿<Window x:Class="Jaroty.EdytujWlasciciela"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Jaroty"
-        xmlns:System="clr-namespace:System;assembly=mscorlib"
+         xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Creat" Height="500" Width="400"
+        Title="EdytujWlasciciela" Height="350" Width="400"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Orange"
         WindowStartupLocation="CenterScreen"
@@ -17,42 +17,10 @@
         <Border Width="10" Height="500" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Red"/>
         <Border Width="10" Height="500" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Red"/>
         <Button Name="Back" Content="Wróć" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="Back_Click" Foreground="Orange" Background="Red" FontWeight="Heavy"/>
-        <Button Name="Add" Content="Dodaj konto" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"  Foreground="Orange" Background="Red" FontWeight="Heavy" Click="Add_Click"/>
+        <Button Name="Add" Content="Aktualizuj konto" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"  Foreground="Orange" Background="Red" FontWeight="Heavy" Click="Add_Click"/>
         <StackPanel>
             <Border Height="5"/>
-            <TextBlock Text="Nazwa użytkownika" 
-                FontWeight="Heavy"
-                FontSize="16"
-                Foreground="Red"
-                HorizontalAlignment="Center"
-                Margin="0 5 0 0"/>
-            <TextBox Name="NazwaUzytkownika" 
-                     Width="200" 
-                     Margin="0 5" 
-                     TextChanged="NazwaUzytkownika_TextChanged"/>
-            <TextBlock Text="Hasło" 
-                FontWeight="Heavy"
-                FontSize="16"
-                Foreground="Red"
-                HorizontalAlignment="Center"
-                Margin="0 0"/>
-            <PasswordBox Name="HasloUzytkownika" 
-                         Width="200" 
-                         Margin="0 5" 
-                         PasswordChanged="HasloUzytkownika_PasswordChanged"/>
-            <TextBlock Name="GU"
-                Text="Grupa użytkownika"
-                HorizontalAlignment="Center"
-                FontSize="16"
-                Foreground="Red"
-                FontWeight="Heavy"
-                Margin="0 0"/>
-            <ComboBox Name="UserGroup" Width="200" Margin="0 5" SelectionChanged="UserGroup_SelectionChanged">
-                <ComboBoxItem>Właściciel mieszkania</ComboBoxItem>
-                <ComboBoxItem>Operator systemu</ComboBoxItem>
-                <ComboBoxItem>Wspólnota</ComboBoxItem>
-            </ComboBox>
-            <StackPanel Name="User" Visibility="Hidden">
+            <StackPanel Name="User" Visibility="Visible">
                 <TextBlock Text="Imie"
                 HorizontalAlignment="Center"
                 FontSize="16"
@@ -121,7 +89,7 @@
                          PreviewTextInput="NumberValidationTextBox"
                          MaxLength="10"/>
             </StackPanel>
-            
+
         </StackPanel>
     </Grid>
 </Window>

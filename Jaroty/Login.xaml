@@ -9,6 +9,7 @@
         WindowStyle="None" ResizeMode="NoResize"
         Background="Orange"
         WindowStartupLocation="CenterScreen"
+        Icon="/images/ikonka.png"
         >
     <Grid>
         <Grid>

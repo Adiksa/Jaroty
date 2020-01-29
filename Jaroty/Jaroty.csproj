@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ikonka.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data">
       <HintPath>..\..\MySql.Data.dll</HintPath>
@@ -61,14 +64,23 @@
     <Compile Include="DodajCene.xaml.cs">
       <DependentUpon>DodajCene.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DodajMieszkanieOp.xaml.cs">
+      <DependentUpon>DodajMieszkanieOp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DodajOplate.xaml.cs">
       <DependentUpon>DodajOplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="EdytujCene.xaml.cs">
       <DependentUpon>EdytujCene.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EdytujMieszkanie.xaml.cs">
+      <DependentUpon>EdytujMieszkanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EdytujOplate.xaml.cs">
       <DependentUpon>EdytujOplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EdytujWlasciciela.xaml.cs">
+      <DependentUpon>EdytujWlasciciela.xaml</DependentUpon>
     </Compile>
     <Compile Include="Operator.xaml.cs">
       <DependentUpon>Operator.xaml</DependentUpon>
@@ -94,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DodajMieszkanieOp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DodajOplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,7 +118,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EdytujMieszkanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EdytujOplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EdytujWlasciciela.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ikonka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ikonka.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -65,6 +65,13 @@ namespace Jaroty
                 if (row.Field<int>(0).Equals((int)wybrane.Row.ItemArray[2]))
                     IdUzytkownika.SelectedItem = row.Field<int>(0);
             }
+            foreach (DataRow row in mieszkania.Rows)
+            {
+                if (row.Field<int>(0).Equals((int)wybrane2.Row.ItemArray[3]))
+                {
+                    IdMieszkania.SelectedItem = row.Field<int>(0);
+                }
+            }
             Zuzcie.Text = ((int)wybrane.Row.ItemArray[6]).ToString();
             if((bool)wybrane.Row.ItemArray[7] == true)
             {
@@ -132,26 +139,28 @@ namespace Jaroty
                 {
                     conn.Open();
                     MySqlDataAdapter adapter = new MySqlDataAdapter();
-                    String query = "SELECT * FROM `Mieszkanie` WHERE `IdWlasciciela`=@cid";
+                    String query = "SELECT `IdMieszkania` FROM `Mieszkanie` WHERE `IdWlasciciela`=@cid";
                     MySqlCommand command = new MySqlCommand(query, conn);
-                    command.Parameters.Add("@cid", MySqlDbType.Int16).Value = wlasciel.Rows[IdUzytkownika.SelectedIndex].Field<int>(0);
+                    command.Parameters.Add("@cid", MySqlDbType.Int16).Value = IdUzytkownika.SelectedItem.ToString();
                     adapter.SelectCommand = command;
+                    mieszkania.Clear();
                     adapter.Fill(mieszkania);
                     conn.Close();
+                    IdMieszkania.Items.Clear();
+                    if (mieszkania != null)
+                    {
+                        foreach (DataRow row in mieszkania.Rows)
+                        {
+                            IdMieszkania.Items.Add(row.Field<int>(0));
+                        }
+                        IdMieszkania.SelectedIndex = -1;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-            foreach (DataRow row in mieszkania.Rows)
-            {
-                IdMieszkania.Items.Add(row.Field<int>(0));
-                if(row.Field<int>(0).Equals((int)wybrane2.Row.ItemArray[3]))
-                {
-                    IdMieszkania.SelectedItem = row.Field<int>(0);
-                }
-            }
+            }   
         }
 
         private void Zuzcie_TextChanged(object sender, TextChangedEventArgs e)

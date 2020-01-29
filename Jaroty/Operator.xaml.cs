@@ -45,6 +45,11 @@ namespace Jaroty
 
         private void Cennik_Click(object sender, RoutedEventArgs e)
         {
+            Home.Visibility = Visibility.Hidden;
+            HomeButton.Visibility = Visibility.Visible;
+            CennikStackPanel.Visibility = Visibility.Visible;
+            BazaMieszkan.Visibility = Visibility.Hidden;
+            BazaWlascicieli.Visibility = Visibility.Hidden;
             try
             {
                 var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
@@ -89,7 +94,11 @@ namespace Jaroty
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Home.Visibility = Visibility.Visible;
+            HomeButton.Visibility = Visibility.Hidden;
+            CennikStackPanel.Visibility = Visibility.Hidden;
+            BazaMieszkan.Visibility = Visibility.Hidden;
+            BazaWlascicieli.Visibility = Visibility.Hidden;
         }
 
         private void OplatyEdytuj_Click(object sender, RoutedEventArgs e)
@@ -107,7 +116,7 @@ namespace Jaroty
             if (wybrane != null)
             {
                 int id = (int)wybrane.Row.ItemArray[0];
-                var result = MessageBox.Show("Czy na pewno chcesz usunąc tą opłatę?", "Usuń opłatę.", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var result = MessageBox.Show("Czy na pewno chcesz usunąć tą opłatę?", "Usuń opłatę.", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -152,7 +161,7 @@ namespace Jaroty
             if (wybrane != null)
             {
                 int id = (int)wybrane.Row.ItemArray[0];
-                var result = MessageBox.Show("Czy na pewno chcesz usunąc tą cenę?", "Usuń opłatę.", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var result = MessageBox.Show("Czy na pewno chcesz usunąć tą cenę?", "Usuń opłatę.", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -198,6 +207,182 @@ namespace Jaroty
                 EdytujCene edytuj = new EdytujCene(CennikGr.SelectedItem as DataRowView);
                 edytuj.ShowDialog();
             }
+        }
+
+        private void Mieszkania_Click(object sender, RoutedEventArgs e)
+        {
+            Home.Visibility = Visibility.Hidden;
+            HomeButton.Visibility = Visibility.Visible;
+            CennikStackPanel.Visibility = Visibility.Hidden;
+            BazaMieszkan.Visibility = Visibility.Visible;
+            BazaWlascicieli.Visibility = Visibility.Hidden;
+            try
+            {
+                var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    conn.Open();
+                    DataTable user = new DataTable();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    String query = "Select * FROM Mieszkanie";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    adapter.SelectCommand = command;
+                    adapter.Fill(user);
+                    MieszkaniaGr.ItemsSource = user.DefaultView;
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void Wlasciciele_Click(object sender, RoutedEventArgs e)
+        {
+            Home.Visibility = Visibility.Hidden;
+            HomeButton.Visibility = Visibility.Visible;
+            CennikStackPanel.Visibility = Visibility.Hidden;
+            BazaMieszkan.Visibility = Visibility.Hidden;
+            BazaWlascicieli.Visibility = Visibility.Visible;
+            try
+            {
+                var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    conn.Open();
+                    DataTable user = new DataTable();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    String query = "Select * FROM WlascicielMieszkania";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    adapter.SelectCommand = command;
+                    adapter.Fill(user);
+                    WlascicieleGr.ItemsSource = user.DefaultView;
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void MieszEdytuj_Click(object sender, RoutedEventArgs e)
+        {
+            if (MieszkaniaGr.SelectedItem as DataRowView != null)
+            {
+                EdytujMieszkanie edytuj = new EdytujMieszkanie(MieszkaniaGr.SelectedItem as DataRowView);
+                edytuj.ShowDialog();
+            }
+        }
+
+        private void UsunMiesz_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView wybrane = MieszkaniaGr.SelectedItem as DataRowView;
+            if (wybrane != null)
+            {
+                int id = (int)wybrane.Row.ItemArray[0];
+                var result = MessageBox.Show("Czy na pewno chcesz usunąć te mieszkanie?", "Usuń Mieszkanie.", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
+                        using (var conn = new MySqlConnection(connstr))
+                        {
+
+                            conn.Open();
+                            MySqlCommand command = new MySqlCommand("DELETE FROM Mieszkanie WHERE IdMieszkania=@id", conn);
+                            command.Parameters.Add("@id", MySqlDbType.Int16).Value = id;
+                            if (command.ExecuteNonQuery() == 1)
+                            {
+                                MessageBox.Show("Usunieto Mieszkania.");
+                                Mieszkania_Click(Wlasciciele, e);
+                            }
+                            else
+                            {
+                                MessageBox.Show("ERROR");
+                            }
+                            conn.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+
+            }
+        }
+
+        private void DodajMiesz_Click(object sender, RoutedEventArgs e)
+        {
+            DodajMieszkanieOp home = new DodajMieszkanieOp();
+            home.ShowDialog();
+        }
+
+        private void WlascicieleEdytuj_Click(object sender, RoutedEventArgs e)
+        {
+            if (WlascicieleGr.SelectedItem as DataRowView != null)
+            {
+                EdytujWlasciciela edytuj = new EdytujWlasciciela(WlascicieleGr.SelectedItem as DataRowView);
+                edytuj.ShowDialog();
+            }
+        }
+
+        private void UsunWlasc_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView wybrane = WlascicieleGr.SelectedItem as DataRowView;
+            if (wybrane != null)
+            {
+                int id = (int)wybrane.Row.ItemArray[0];
+                var result = MessageBox.Show("Czy na pewno chcesz usunąć tego właściciela?", "Usuń właściciela.", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        var connstr = "server=remotemysql.com;uid=9eO1BYpNqH;pwd=Dcs0DDWGze;database=9eO1BYpNqH";
+                        using (var conn = new MySqlConnection(connstr))
+                        {
+
+                            conn.Open();
+                            MySqlCommand command = new MySqlCommand("DELETE FROM `WlascicielMieszkania` WHERE `IdWlasciciela`=@id", conn);
+                            command.Parameters.Add("@id", MySqlDbType.Int16).Value = id;
+                            if (command.ExecuteNonQuery() == 1)
+                            {
+                                MessageBox.Show("Usunieto wlasciciela.");
+                                Wlasciciele_Click(Wlasciciele, e);
+                            }
+                            else
+                            {
+                                MessageBox.Show("ERROR");
+                            }
+                            conn.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+
+            }
+        }
+
+        private void DodajWlasc_Click(object sender, RoutedEventArgs e)
+        {
+            Creat tworzy = new Creat();
+            tworzy.UserGroup.SelectedIndex = 0;
+            tworzy.UserGroup.Visibility = Visibility.Hidden;
+            tworzy.GU.Visibility = Visibility.Hidden;
+
+            tworzy.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Wlasciciele_Click(Wlasciciele, e);
         }
     }
 }

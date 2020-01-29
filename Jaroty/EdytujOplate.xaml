@@ -8,7 +8,8 @@
         Title="EdytujOplate" Height="300" Width="300"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Orange"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="/images/ikonka.png">
     <Grid>
         <Border Height="10" Background="Red" VerticalAlignment="Top"/>
         <Border Width="10" Background="Red" HorizontalAlignment="Left"/>

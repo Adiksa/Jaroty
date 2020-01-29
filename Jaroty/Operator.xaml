@@ -9,6 +9,7 @@
         WindowStyle="None" ResizeMode="NoResize"
         Background="Orange"
         WindowStartupLocation="CenterScreen"
+        Icon="/images/ikonka.png"
         >
     <Grid>
         <TextBlock Name="Welcome"
@@ -104,7 +105,7 @@
             <Button Name="Mieszkania"
                 Height="50"
                 Margin="5"
-                Background="Orange"
+                Background="Orange" Click="Mieszkania_Click"
             >
                 <TextBlock Text="Zarządzaj bazą mieszkań" 
                            TextWrapping="Wrap"
@@ -117,7 +118,7 @@
                 Name ="Wlasciciele"
                 Height="50"
                 Margin="5"
-                Background="Orange"
+                Background="Orange" Click="Wlasciciele_Click"
             >
 
                 <TextBlock Text="Zarządzaj bazą właścicieli" 
@@ -131,7 +132,7 @@
         <StackPanel>
             <Image Source="/images/logo.png" Margin="150,0" />
         </StackPanel>
-        <StackPanel Name="CennikStackPanel" Visibility="Visible">
+        <StackPanel Name="CennikStackPanel" Visibility="Hidden">
             <Border Height="160"/>
             <TextBlock Text="Oplaty"
                 TextWrapping="Wrap"
@@ -214,56 +215,92 @@
                     />
         </StackPanel>
         <StackPanel Name="BazaMieszkan" Visibility="Hidden">
-            <Border Height="180"/>
-            <TextBlock Text="Status Oplat"
+            <Border Height="160"/>
+            <TextBlock Text="Mieszkania"
                 TextWrapping="Wrap"
                 FontWeight="Heavy"
-                FontSize="26"
+                FontSize="16"
                 Foreground="Red"
                 HorizontalAlignment="Center"
                            Margin="0 5 0 5"/>
-            <DataGrid   Name="SOplaty"
+            <DataGrid   Name="MieszkaniaGr"
                 HorizontalAlignment="Center"
-                      Width="300"
-                      Height="200"
+                      Width="400"
+                      Height="250"
+                        MaxWidth="400"
                       IsReadOnly="True"
                       />
-            <TextBlock Name="SOplatyLacznie"
-                Text=""
-                TextWrapping="Wrap"
-                FontWeight="Heavy"
-                FontSize="26"
-                Foreground="Red"
-                       MaxWidth="300"
-                HorizontalAlignment="Center"
-                           Margin="0 5 0 5"/>
+            <Border Height="5"/>
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
+                <Button Name="MieszEdytuj" 
+                    Content="Edytuj Mieszkanie"
+                    Width="80"
+                    Foreground ="Orange"
+                    Background="Red" Click="MieszEdytuj_Click" />
+                <Border Width="5"/>
+                <Button Name="UsunMiesz" 
+                    Content="Usuń Mieszkanie"
+                    Width="80"
+                    Foreground ="Orange"
+                    Background="Red" Click="UsunMiesz_Click" />
+                <Border Width="5"/>
+                <Button Name="DodajMiesz" 
+                    Content="Dodaj Mieszkanie"
+                    Width="80"
+                    Foreground ="Orange"
+                    Background="Red" Click="DodajMiesz_Click"/>
+            </StackPanel>
+            <Border Height="5"/>
+            <Button Content="Odśwież"
+                    Width="80"
+                    Foreground ="Orange"
+                    Background="Red" Click="Mieszkania_Click" />
         </StackPanel>
-        <StackPanel Name="DoOplat" Visibility="Hidden">
-            <Border Height="180"/>
-            <TextBlock Text="Status konta"
+        <StackPanel Name="BazaWlascicieli" Visibility="Hidden">
+            <Border Height="160"/>
+            <TextBlock Text="Wlasciciele"
                 TextWrapping="Wrap"
                 FontWeight="Heavy"
-                FontSize="26"
+                FontSize="16"
                 Foreground="Red"
                 HorizontalAlignment="Center"
                            Margin="0 5 0 5"/>
-            <DataGrid   Name="DOplaty"
+            <DataGrid   Name="WlascicieleGr"
                 HorizontalAlignment="Center"
-                      Width="300"
-                      Height="200"
+                      Width="400"
+                      Height="250"
+                        MaxWidth="400"
                       IsReadOnly="True"
                       />
-            <TextBlock Name="DOplatyLacznie"
-                Text=""
-                TextWrapping="Wrap"
-                MaxWidth="300"
-                FontWeight="Heavy"
-                FontSize="26"
-                Foreground="Red"
-                HorizontalAlignment="Center"
-                           Margin="0 5 0 5"/>
+            <Border Height="5"/>
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
+                <Button Name="WlascicieleEdytuj" 
+                    Content="Edytuj Wlasciciela"
+                    Width="120"
+                    Foreground ="Orange"
+                    Background="Red" Click="WlascicieleEdytuj_Click" />
+                <Border Width="5"/>
+                <Button Name="UsunWlasc" 
+                    Content="Usuń Wlasciciela"
+                    Width="120"
+                    Foreground ="Orange"
+                    Background="Red" Click="UsunWlasc_Click" />
+                <Border Width="5"/>
+                <Button Name="DodajWlasc" 
+                    Content="Dodaj Wlasciciela"
+                    Width="120"
+                    Foreground ="Orange"
+                    Background="Red" Click="DodajWlasc_Click"/>
+            </StackPanel>
+            <Border Height="5"/>
+            <Button Content="Odśwież"
+                    Width="80"
+                    Foreground ="Orange"
+                    Background="Red" Click="Button_Click" />
         </StackPanel>
-        <StackPanel Name="Home" Visibility="Hidden">
+        <StackPanel Name="Home" Visibility="Visible">
             <Border Height="150"/>
             <TextBlock Text="Witamy na stronie głównej systemu Współdzielni Mieszkaniowej ''Jaroty''.    Użyj Menu z lewej strony, aby wybrać dostępne opcje."
                            Width="400"

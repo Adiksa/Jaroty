@@ -79,7 +79,7 @@ namespace Jaroty
                 if (usertype == 0)
                 {
                     string name = ImieUzytkownika.Text;
-                    string surname = NazwaUzytkownika.Text;
+                    string surname = NazwiskoUzytkownika.Text;
                     string email = EmailUzytkownika.Text;
                     string pesel = PeselUzytkownika.Text;
                     string data = DataUrodzinUzytkownika.Text;
